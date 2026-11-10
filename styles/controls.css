@@ -1,0 +1,329 @@
+:root,
+.light {
+	--fd-btn-bg: #ffffff;
+	--fd-btn-fg: #111827;
+	--fd-btn-muted: #f3f4f6;
+	--fd-btn-muted-fg: #6b7280;
+	--fd-btn-border: #e5e7eb;
+	--fd-btn-ring-offset: #ffffff;
+	--fd-btn-primary: #71296a;
+	--fd-btn-primary-hover: #5c2156;
+	--fd-btn-primary-ring: #934f88;
+	--fd-btn-primary-link: #71296a;
+	--fd-btn-primary-link-hover: #4a1b45;
+	--fd-btn-secondary: #0284c7;
+	--fd-btn-secondary-hover: #0369a1;
+	--fd-btn-danger: #dc2626;
+	--fd-btn-danger-hover: #b91c1c;
+	--fd-btn-danger-soft-bg: #fef2f2;
+	--fd-btn-danger-soft-fg: #b91c1c;
+	--fd-btn-danger-soft-border: #fecaca;
+	--fd-btn-danger-soft-hover: #fee2e2;
+	--fd-btn-danger-outline-border: #fecaca;
+	--fd-btn-danger-outline-fg: #dc2626;
+	--fd-btn-danger-outline-hover-bg: #fef2f2;
+	--fd-btn-danger-outline-hover-fg: #b91c1c;
+	--fd-btn-danger-ghost-fg: #dc2626;
+	--fd-btn-danger-ghost-hover: #fef2f2;
+	--fd-btn-danger-link-hover: #7f1d1d;
+	--fd-btn-ring: var(--fd-btn-primary-ring);
+}
+
+.dark {
+	--fd-btn-bg: #1a2332;
+	--fd-btn-fg: #f3f4f6;
+	--fd-btn-muted: #243044;
+	--fd-btn-muted-fg: #9ca3af;
+	--fd-btn-border: #374151;
+	--fd-btn-ring-offset: #0f1419;
+	--fd-btn-primary-link: #b078a8;
+	--fd-btn-primary-link-hover: #d0a8cb;
+	--fd-btn-danger-soft-bg: rgb(127 29 29 / 0.4);
+	--fd-btn-danger-soft-fg: #fca5a5;
+	--fd-btn-danger-soft-border: rgb(248 113 113 / 0.4);
+	--fd-btn-danger-soft-hover: rgb(127 29 29 / 0.6);
+	--fd-btn-danger-outline-border: rgb(248 113 113 / 0.4);
+	--fd-btn-danger-outline-fg: #f87171;
+	--fd-btn-danger-outline-hover-bg: rgb(127 29 29 / 0.4);
+	--fd-btn-danger-outline-hover-fg: #fca5a5;
+	--fd-btn-danger-ghost-fg: #f87171;
+	--fd-btn-danger-ghost-hover: rgb(127 29 29 / 0.4);
+	--fd-btn-danger-link-hover: #fca5a5;
+}
+
+/* Layered so Tailwind utilities on the same element can override (e.g. btn-bare + px-3). */
+@layer components {
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.375rem;
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		border: 1px solid transparent;
+		background: transparent;
+		color: inherit;
+		cursor: pointer;
+		transition:
+			color 150ms ease,
+			background-color 150ms ease,
+			border-color 150ms ease,
+			filter 150ms ease,
+			opacity 150ms ease;
+	}
+
+	.btn:focus-visible {
+		outline: none;
+		box-shadow:
+			0 0 0 2px var(--fd-btn-ring-offset),
+			0 0 0 4px var(--fd-btn-ring, var(--fd-btn-primary-ring));
+	}
+
+	.btn:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	.btn-primary {
+		background: var(--fd-btn-primary);
+		color: #ffffff;
+	}
+
+	.btn-primary:hover {
+		background: var(--fd-btn-primary-hover);
+	}
+
+	.btn-secondary {
+		background: var(--fd-btn-secondary);
+		color: #ffffff;
+	}
+
+	.btn-secondary:hover {
+		background: var(--fd-btn-secondary-hover);
+	}
+
+	.btn-outline {
+		border-color: var(--fd-btn-border);
+		background: var(--fd-btn-bg);
+		color: var(--fd-btn-fg);
+	}
+
+	.btn-outline:hover {
+		background: var(--fd-btn-muted);
+	}
+
+	.btn-ghost {
+		background: transparent;
+		color: var(--fd-btn-muted-fg);
+	}
+
+	.btn-ghost:hover {
+		background: var(--fd-btn-muted);
+		color: var(--fd-btn-fg);
+	}
+
+	.btn-danger {
+		background: var(--fd-btn-danger);
+		color: #ffffff;
+	}
+
+	.btn-danger:hover {
+		background: var(--fd-btn-danger-hover);
+	}
+
+	.btn-danger-outline {
+		border-color: #fecaca;
+		background: transparent;
+		color: #fecaca;
+	}
+
+	.btn-danger-outline:hover {
+		background: rgb(254 202 202 / 0.1);
+	}
+
+	.dark .btn-danger-outline {
+		border-color: rgb(248 113 113 / 0.4);
+		color: #fca5a5;
+	}
+
+	.btn-outline-danger {
+		border-color: var(--fd-btn-danger-outline-border);
+		background: var(--fd-btn-bg);
+		color: var(--fd-btn-danger-outline-fg);
+	}
+
+	.btn-outline-danger:hover {
+		background: var(--fd-btn-danger-outline-hover-bg);
+		color: var(--fd-btn-danger-outline-hover-fg);
+	}
+
+	.btn-danger-soft {
+		border-color: var(--fd-btn-danger-soft-border);
+		background: var(--fd-btn-danger-soft-bg);
+		color: var(--fd-btn-danger-soft-fg);
+	}
+
+	.btn-danger-soft:hover {
+		background: var(--fd-btn-danger-soft-hover);
+	}
+
+	.btn-ghost-danger {
+		background: transparent;
+		color: var(--fd-btn-danger-ghost-fg);
+	}
+
+	.btn-ghost-danger:hover {
+		background: var(--fd-btn-danger-ghost-hover);
+	}
+
+	.btn-inverse {
+		border-color: transparent;
+		background: #ffffff;
+		color: #18181b;
+	}
+
+	.btn-inverse:hover {
+		background: rgb(255 255 255 / 0.9);
+	}
+
+	.btn-outline-inverse {
+		border-color: rgb(255 255 255 / 0.3);
+		background: transparent;
+		color: #ffffff;
+	}
+
+	.btn-outline-inverse:hover {
+		background: rgb(255 255 255 / 0.1);
+	}
+
+	.btn-brand {
+		border-color: transparent;
+		color: #ffffff;
+	}
+
+	.btn-brand:hover {
+		filter: brightness(1.1);
+	}
+
+	.btn-muted {
+		border-color: var(--fd-btn-border);
+		background: var(--fd-btn-muted);
+		color: var(--fd-btn-fg);
+	}
+
+	.btn-muted:hover {
+		background: color-mix(in srgb, var(--fd-btn-muted) 80%, transparent);
+	}
+
+	.btn-link {
+		background: transparent;
+		padding: 0;
+		color: var(--fd-btn-primary-link);
+		box-shadow: none;
+	}
+
+	.btn-link:hover {
+		background: transparent;
+		color: var(--fd-btn-primary-link-hover);
+	}
+
+	.btn-link:focus-visible {
+		box-shadow: none;
+	}
+
+	.btn-link-danger {
+		background: transparent;
+		padding: 0;
+		color: var(--fd-btn-danger);
+		box-shadow: none;
+	}
+
+	.btn-link-danger:hover {
+		background: transparent;
+		color: var(--fd-btn-danger-link-hover);
+	}
+
+	.btn-link-danger:focus-visible {
+		box-shadow: none;
+	}
+
+	/* :where() keeps resets at 0 specificity so Tailwind utilities always win. */
+	.btn-bare {
+		font-family: inherit;
+	}
+
+	:where(.btn-bare) {
+		height: auto;
+		border-radius: 0;
+		border-style: none;
+		border-width: 0;
+		background-color: transparent;
+		padding: 0;
+		color: inherit;
+		box-shadow: none;
+	}
+
+	:where(.btn-bare):hover {
+		background-color: transparent;
+	}
+
+	:where(.btn-bare):focus-visible {
+		box-shadow: none;
+	}
+
+	.btn-xs {
+		height: 1.75rem;
+		padding: 0 0.5rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+
+	.btn-sm {
+		height: 2rem;
+		padding: 0 0.75rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+
+	.btn-md {
+		height: 2.5rem;
+		padding: 0.5rem 1rem;
+	}
+
+	.btn-lg {
+		height: 3rem;
+		padding: 0 2rem;
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
+
+	.btn-icon {
+		height: 2.25rem;
+		width: 2.25rem;
+		flex-shrink: 0;
+		border-radius: 9999px;
+		padding: 0;
+	}
+
+	.btn-icon-on-dark {
+		border: 0;
+		background: rgb(255 255 255 / 0.1);
+		color: #ffffff;
+	}
+
+	.btn-icon-on-dark:hover {
+		background: rgb(255 255 255 / 0.2);
+	}
+
+	@media screen and (max-width: 768px) {
+		.btn {
+			touch-action: manipulation;
+		}
+
+		.btn:not(.btn-sm) {
+			min-height: 44px;
+		}
+	}
+}
