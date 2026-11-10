@@ -10,8 +10,17 @@
 		"./controls": "./src/controls/index.ts",
 		"./styles/tokens.css": "./styles/tokens.css",
 		"./styles/controls.css": "./styles/controls.css",
-		"./assets/logo.svg": "./assets/logo.svg"
+		"./assets/logo.svg": "./assets/logo.svg",
+		"./assets/logo-wordmark-white.png": "./assets/logo-wordmark-white.png",
+		"./assets/logo-wordmark-purple.png": "./assets/logo-wordmark-purple.png",
+		"./assets/app-icon.png": "./assets/app-icon.png"
 	},
+	"files": [
+		"src",
+		"styles",
+		"assets",
+		"README.md"
+	],
 	"peerDependencies": {
 		"next": ">=15",
 		"react": ">=19",
