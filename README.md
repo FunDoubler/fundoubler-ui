@@ -31,22 +31,45 @@ In `package.json`:
 ## Usage
 
 ```tsx
-import { BrandMark, Button, Eyebrow, Shell } from "@fundoubler/ui";
+import { AppIcon, BrandMark, Button, Eyebrow, Shell } from "@fundoubler/ui";
 import { ControlButton, brandPrimaryButtonProps } from "@fundoubler/ui/controls";
 import "@fundoubler/ui/styles/tokens.css";
 import "@fundoubler/ui/styles/controls.css";
+
+export default function Layout({ children }) {
+  return <body className="fd-theme">{children}</body>;
+}
 ```
 
 Next.js consumers should set `transpilePackages: ["@fundoubler/ui"]`.
 
-Wrap marketing pages in `.fd-theme` (or nest under an element with that class). Copy brand assets from the package into each app’s `public/` folder so `BrandMark` (and app icons) can load via Next Image:
+Brand images are bundled with the components. Use `BrandMark` and `AppIcon` directly; no copy into `public/` is required for those.
 
-| Package export | Copy to |
-| -------------- | ------- |
-| `@fundoubler/ui/assets/logo.svg` | `public/logo.svg` |
-| `@fundoubler/ui/assets/logo-wordmark-white.png` | `public/logo-wordmark-white.png` |
-| `@fundoubler/ui/assets/logo-wordmark-purple.png` | `public/logo-wordmark-purple.png` |
-| `@fundoubler/ui/assets/app-icon.png` | `public/marketing/app-icon.png` (or your app icon path) |
+Raw files are still available if you need them outside React:
+
+- `@fundoubler/ui/assets/logo.svg`
+- `@fundoubler/ui/assets/logo-wordmark-white.png`
+- `@fundoubler/ui/assets/logo-wordmark-purple.png`
+- `@fundoubler/ui/assets/app-icon.png`
 
 - Marketing CTAs: `Button` (pill styles from `tokens.css`)
 - Product controls: `ControlButton` + `.btn*` classes from `controls.css`
+
+## Style guide
+
+Mount the living brand catalog in any Next.js app:
+
+```tsx
+import { StyleGuide } from "@fundoubler/ui/style-guide";
+import "@fundoubler/ui/styles/style-guide.css";
+
+export default function StyleGuidePage() {
+  return (
+    <main className="fd-theme fd-style-guide">
+      <StyleGuide />
+    </main>
+  );
+}
+```
+
+Optional host chrome: set `--sg-sticky-top` (for example to your site header height) so the in-page subnav sticks below it.

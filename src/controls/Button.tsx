@@ -70,7 +70,7 @@ export function ControlButton({
 				"btn",
 				VARIANT_CLASS[variant],
 				size ? SIZE_CLASS[size] : null,
-				className
+				className,
 			)}
 			{...props}
 		/>
@@ -79,7 +79,7 @@ export function ControlButton({
 
 export function brandPrimaryButtonProps(
 	primaryColor: string | null | undefined,
-	extraClassName?: string
+	extraClassName?: string,
 ): { className: string; style?: CSSProperties } {
 	if (primaryColor?.trim()) {
 		const color = primaryColor.trim();

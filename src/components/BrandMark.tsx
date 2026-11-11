@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps } from "react";
+import logoMark from "../../assets/logo.svg";
+import wordmarkDark from "../../assets/logo-wordmark-purple.png";
+import wordmarkLight from "../../assets/logo-wordmark-white.png";
 
 type BrandVariant = "mark" | "wordmark-light" | "wordmark-dark";
 
@@ -14,11 +17,17 @@ type BrandMarkProps = {
 
 function resolveVariant(
 	variant: BrandVariant | undefined,
-	light: boolean
+	light: boolean,
 ): BrandVariant {
 	if (variant) return variant;
 	return light ? "wordmark-light" : "mark";
 }
+
+const images = {
+	mark: { src: logoMark, width: 40, height: 40 },
+	"wordmark-light": { src: wordmarkLight, width: 1373, height: 148 },
+	"wordmark-dark": { src: wordmarkDark, width: 1373, height: 148 },
+} as const;
 
 export function BrandMark({
 	href = "/",
@@ -30,6 +39,7 @@ export function BrandMark({
 }: BrandMarkProps) {
 	const resolved = resolveVariant(variant, light);
 	const isWordmark = resolved !== "mark";
+	const image = images[resolved];
 	const classes = [
 		"brand",
 		light || resolved === "wordmark-light" ? "brand--light" : "",
@@ -38,29 +48,6 @@ export function BrandMark({
 	]
 		.filter(Boolean)
 		.join(" ");
-
-	// Intrinsic PNG size is 1373×148; keep that ratio for next/image.
-	const image =
-		resolved === "wordmark-light"
-			? {
-					src: "/logo-wordmark-white.png",
-					width: 1373,
-					height: 148,
-					alt: "FunDoubler",
-				}
-			: resolved === "wordmark-dark"
-				? {
-						src: "/logo-wordmark-purple.png",
-						width: 1373,
-						height: 148,
-						alt: "FunDoubler",
-					}
-				: {
-						src: "/logo.svg",
-						width: 40,
-						height: 40,
-						alt: "FunDoubler",
-					};
 
 	return (
 		<Link
@@ -71,7 +58,7 @@ export function BrandMark({
 		>
 			<Image
 				src={image.src}
-				alt={image.alt}
+				alt="FunDoubler"
 				width={image.width}
 				height={image.height}
 				priority={priority}

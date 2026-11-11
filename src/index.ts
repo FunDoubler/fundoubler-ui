@@ -1,3 +1,4 @@
+export { AppIcon } from "./components/AppIcon";
 export { BrandMark } from "./components/BrandMark";
 export type { ButtonProps } from "./components/Button";
 export { Button } from "./components/Button";

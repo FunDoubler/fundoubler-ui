@@ -8,8 +8,10 @@
 	"exports": {
 		".": "./src/index.ts",
 		"./controls": "./src/controls/index.ts",
+		"./style-guide": "./src/style-guide/index.ts",
 		"./styles/tokens.css": "./styles/tokens.css",
 		"./styles/controls.css": "./styles/controls.css",
+		"./styles/style-guide.css": "./styles/style-guide.css",
 		"./assets/logo.svg": "./assets/logo.svg",
 		"./assets/logo-wordmark-white.png": "./assets/logo-wordmark-white.png",
 		"./assets/logo-wordmark-purple.png": "./assets/logo-wordmark-purple.png",
@@ -21,13 +23,21 @@
 		"assets",
 		"README.md"
 	],
+	"scripts": {
+		"lint": "biome check .",
+		"fix": "biome check --write . && biome format --write . && pnpm knip",
+		"format": "biome format --write .",
+		"knip": "knip"
+	},
 	"peerDependencies": {
 		"next": ">=15",
 		"react": ">=19",
 		"react-dom": ">=19"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "2.6.4",
 		"@types/react": "^19",
+		"knip": "^6.44.1",
 		"next": "16.4.2",
 		"react": "19.3.0",
 		"react-dom": "19.3.0",
