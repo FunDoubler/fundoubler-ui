@@ -32,12 +32,15 @@ In `package.json`:
 
 ```tsx
 import { AppIcon, BrandMark, Button, Eyebrow, Shell } from "@fundoubler/ui";
-import { ControlButton, brandPrimaryButtonProps } from "@fundoubler/ui/controls";
+import {
+	ControlButton,
+	brandPrimaryButtonProps,
+} from "@fundoubler/ui/controls";
 import "@fundoubler/ui/styles/tokens.css";
 import "@fundoubler/ui/styles/controls.css";
 
 export default function Layout({ children }) {
-  return <body className="fd-theme">{children}</body>;
+	return <body className="fd-theme">{children}</body>;
 }
 ```
 
@@ -64,11 +67,11 @@ import { StyleGuide } from "@fundoubler/ui/style-guide";
 import "@fundoubler/ui/styles/style-guide.css";
 
 export default function StyleGuidePage() {
-  return (
-    <main className="fd-theme fd-style-guide">
-      <StyleGuide />
-    </main>
-  );
+	return (
+		<main className="fd-theme fd-style-guide">
+			<StyleGuide />
+		</main>
+	);
 }
 ```
 
